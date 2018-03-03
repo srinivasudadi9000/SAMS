@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_marginLeft="5dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_height="200dp"
+    >
+
+   <LinearLayout
+       android:orientation="horizontal"
+       android:weightSum="2"
+       android:layout_width="match_parent"
+       android:layout_height="200dp">
+<!--
+      <RelativeLayout
+          android:id="@+id/install_image_rl"
+          android:layout_marginLeft="2dp"
+          android:layout_marginBottom="5dp"
+          android:layout_marginTop="5dp"
+          android:layout_gravity="center"
+          android:layout_weight="1"
+          android:layout_width="250dp"
+          android:layout_height="200dp">
+      </RelativeLayout>
+-->
+       <ImageView
+           android:visibility="gone"
+           android:layout_marginRight="2dp"
+           android:layout_gravity="center"
+           android:layout_weight="1.1"
+           android:id="@+id/recce_img_hide"
+           android:src="@drawable/dummy"
+           android:layout_width="match_parent"
+           android:layout_height="220dp" />
+
+       <ImageView
+          android:layout_marginRight="2dp"
+          android:layout_gravity="center"
+          android:layout_weight="1.1"
+          android:id="@+id/recce_img"
+          android:src="@drawable/dummy"
+          android:layout_width="match_parent"
+          android:layout_height="220dp" />
+
+      <LinearLayout
+          android:layout_marginTop="5dp"
+          android:orientation="vertical"
+          android:layout_weight="0.9"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+          <TextView
+              android:textStyle="bold"
+              android:text="OutLetName"
+              android:id="@+id/outletname_tv"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" />
+          <TextView
+              android:layout_marginTop="5dp"
+              android:lines="3"
+              android:text="Address"
+              android:id="@+id/outletaddress_tv"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" />
+         <TextView
+             android:layout_marginTop="5dp"
+             android:textAllCaps="true"
+             android:textStyle="bold"
+             android:text="Product Name"
+             android:id="@+id/productname_tv"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content" />
+         <TextView
+             android:layout_marginTop="5dp"
+             android:textAllCaps="true"
+             android:textStyle="bold"
+             android:text="height_width_tv"
+             android:id="@+id/height_width_tv"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content" />
+         <LinearLayout
+             android:layout_marginTop="5dp"
+             android:orientation="horizontal"
+             android:layout_weight="2"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content">
+            <TextView
+                android:textColor="#ff0000"
+                android:id="@+id/recce_status_tv"
+                android:padding="0dp"
+                android:textStyle="bold"
+                android:text="status"
+                android:textAllCaps="true"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:visibility="gone"
+                android:textColor="@color/colorPrimary"
+                android:id="@+id/recce_edit_tv"
+                android:padding="5dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:text="edit"
+                android:textAllCaps="true"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+         </LinearLayout>
+      </LinearLayout>
+   </LinearLayout>
+   <TextView
+       android:visibility="gone"
+       android:id="@+id/recce_name_tv"
+       android:text="asdfa"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content" />
+</android.support.v7.widget.CardView>

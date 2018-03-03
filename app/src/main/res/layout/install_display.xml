@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="srinivas.sams.Activity.Install_display">
+  <include
+      layout="@layout/header"></include>
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      android:layout_marginTop="1dp"
+      android:weightSum="1"
+      android:id="@+id/linearLayout">
+    <android.support.v7.widget.SearchView
+        android:layout_width="match_parent"
+        android:iconifiedByDefault="true"
+        android:id="@+id/svOutletNameAddress"
+        android:layout_weight="0.4"
+        android:layout_height="match_parent">
+    </android.support.v7.widget.SearchView>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.6"
+        android:entries="@array/filter"
+        android:id="@+id/spFilter">
+    </Spinner>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:layout_margin="1dp"
+        android:text="Completed"
+        android:textColor="#fff"
+        android:visibility="gone"
+        android:id="@+id/btnRecceCompleted"
+        android:layout_weight="1"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:layout_margin="1dp"
+        android:textColor="#fff"
+        android:id="@+id/btnRecceNotCompleted"
+        android:text="Not Completed"
+        android:visibility="gone"
+        android:layout_weight="1"/>
+
+  </LinearLayout>
+
+  <android.support.v7.widget.RecyclerView
+      android:id="@+id/install_recyler"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+  </android.support.v7.widget.RecyclerView>
+</LinearLayout>
