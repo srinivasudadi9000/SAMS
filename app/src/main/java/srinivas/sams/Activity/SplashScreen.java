@@ -139,7 +139,7 @@ public class SplashScreen extends Activity {
                 public void run() {
                     //Preferences.setVendor("", "", "", SplashScreen.this);
                     if (allow.equals("true")) {
-                        if (!Validation.internet(SplashScreen.this)) {
+                        if (!Validation.hasActiveInternetConnection(SplashScreen.this)) {
                             if (Preferences.getVendorid(SplashScreen.this).equals("login")) {
                                 Intent i = new Intent(SplashScreen.this, Login.class);
                                 startActivity(i);

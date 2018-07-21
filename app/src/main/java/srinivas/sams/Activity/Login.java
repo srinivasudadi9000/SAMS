@@ -100,7 +100,7 @@ public class Login extends Activity {
         startActivity(i);*/
     }
     private void loginSams(){
-        if (!Validation.internet(Login.this)) {
+        if (!Validation.hasActiveInternetConnection(Login.this)) {
             showInternet(Login.this);
         } else {
             Toast.makeText(getBaseContext(),imenumber1+" "+imenumber2,Toast.LENGTH_SHORT).show();

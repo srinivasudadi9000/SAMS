@@ -43,7 +43,7 @@ public class Product_Display extends Activity {
         ButterKnife.bind(this);
         product_recyler.setLayoutManager(new LinearLayoutManager(this));
 
-        if (!Validation.internet(Product_Display.this)) {
+        if (!Validation.hasActiveInternetConnection(Product_Display.this)) {
             getProduct_from_local();
            // Toast.makeText(getBaseContext(), "local db recces", Toast.LENGTH_LONG).show();
         } else {

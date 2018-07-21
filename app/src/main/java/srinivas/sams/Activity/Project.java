@@ -48,7 +48,7 @@ public class Project extends Activity {
         project_recyler.setLayoutManager(new LinearLayoutManager(this));
        // project_recyler.setItemAnimator(new DefaultItemAnimator());
         header_tv.setText(Preferences.getSelection(Project.this));
-        if (!Validation.internet(Project.this)) {
+        if (!Validation.hasActiveInternetConnection(Project.this)) {
             getProject_from_local();
           //  Toast.makeText(getBaseContext(), "local db recces", Toast.LENGTH_LONG).show();
         } else {

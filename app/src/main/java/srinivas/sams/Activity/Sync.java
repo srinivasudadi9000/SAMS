@@ -51,7 +51,7 @@ public class Sync extends Activity {
         sync_status = (TextView) findViewById(R.id.sync_status);
         sync_count = (TextView) findViewById(R.id.sync_count);
         clearPreferences();
-        if (!Validation.internet(Sync.this)) {
+        if (!Validation.hasActiveInternetConnection(Sync.this)) {
             showalert();
         } else {
 

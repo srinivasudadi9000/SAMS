@@ -85,7 +85,7 @@ public class InstallAdapter extends RecyclerView.Adapter<InstallAdapter.Reccehol
         }
 
         Bitmap bmImage = null;
-        if (!Validation.internet(context)) {
+        if (!Validation.hasActiveInternetConnection(context)) {
             if (installations.get(position).getInstallation_image().toString().contains("storage")) {
                 bmImage = BitmapFactory.decodeFile(installations.get(position).getInstallation_image().toString(), null);
                 holder.recce_img.setImageBitmap(bmImage);

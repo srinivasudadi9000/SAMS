@@ -56,7 +56,7 @@ public class Install_display extends Activity {
         ButterKnife.bind(this);
         install_recyler.setLayoutManager(new LinearLayoutManager(this));
         header_tv.setText("INSTALLATIONS");
-        if (!Validation.internet(Install_display.this)) {
+        if (!Validation.hasActiveInternetConnection(Install_display.this)) {
             getInstall_from_local();
             // Toast.makeText(getBaseContext(), "local db recces", Toast.LENGTH_LONG).show();
         } else {

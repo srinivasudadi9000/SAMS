@@ -116,7 +116,7 @@ public class Update_Install extends Activity {
                 .build();
 
         Bitmap bmImage = null;
-        if (!Validation.internet(Update_Install.this)) {
+        if (!Validation.hasActiveInternetConnection(Update_Install.this)) {
             ImageLoader.getInstance()
                     .displayImage(web+"image_uploads/recce_uploads/" + getIntent().getStringExtra("recce_image")
                             , recceImage, options);

@@ -268,7 +268,7 @@ public class Update_Recce extends Activity {
         tvRheight.setText(height);
         Bitmap bmImage = null, bmImage1 = null, bmImage2 = null, bmImage3 = null, bmImage4 = null;
         ;
-        if (!Validation.internet(Update_Recce.this)) {
+        if (!Validation.hasActiveInternetConnection(Update_Recce.this)) {
 
             if (mainpic.contains("noimage.png") || !mainpic.contains("storage")) {
                 ivRecceImage.setImageResource(R.drawable.dummy);

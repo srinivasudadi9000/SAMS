@@ -85,7 +85,7 @@ public class RecceAdapter extends RecyclerView.Adapter<RecceAdapter.Recceholder>
         //  holder.recce_img.setText(receelist.get(position).getOutlet_name().toString());
 
         Bitmap bmImage = null;
-        if (!Validation.internet(context)) {
+        if (!Validation.hasActiveInternetConnection(context)) {
             BitmapFactory.Options opt = new BitmapFactory.Options();
             //opt.inSampleSize = 8;
             //opt.inMutable = true;
@@ -188,7 +188,7 @@ public class RecceAdapter extends RecyclerView.Adapter<RecceAdapter.Recceholder>
 
         }
 
-        if (!Validation.internet(context)) {
+        if (!Validation.hasActiveInternetConnection(context)) {
             if (receelist.get(position).getRecce_image_upload_status().equals("Completed")) {
                 holder.recce_status_tv.setTextColor(Color.parseColor("#007EA8"));
                 holder.recce_status_tv.setText(receelist.get(position).getRecce_image_upload_status().toString());
@@ -236,7 +236,7 @@ public class RecceAdapter extends RecyclerView.Adapter<RecceAdapter.Recceholder>
             recce_edit_tv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (!Validation.internet(itemView.getContext())) {
+                    if (!Validation.hasActiveInternetConnection(itemView.getContext())) {
                         //showRecceEdit(itemView.getContext());
                         Preferences.setreeceId_product(receelist.get(getAdapterPosition()).getRecce_id(), itemView.getContext());
                         Intent product = new Intent(context, Product_Display.class);
@@ -353,7 +353,7 @@ public class RecceAdapter extends RecyclerView.Adapter<RecceAdapter.Recceholder>
                         ((Activity) itemView.getContext()).finish();
                     } else {
                         if (receelist.get(getAdapterPosition()).getProduct_name().equals("NA")) {
-                            if (!Validation.internet(context)) {
+                            if (!Validation.hasActiveInternetConnection(context)) {
                                 Intent product = new Intent(context, Product_Display.class);
                                 itemView.getContext().startActivity(product);
                                 ((Activity) itemView.getContext()).finish();
@@ -362,7 +362,7 @@ public class RecceAdapter extends RecyclerView.Adapter<RecceAdapter.Recceholder>
                             }
                         } else {
 
-                            if (!Validation.internet(context)) {
+                            if (!Validation.hasActiveInternetConnection(context)) {
                                 Intent i = new Intent(context, Update_Recce.class);
                                 i.putExtra("recce_id", receelist.get(getAdapterPosition()).getRecce_id().toString());
                                 if (receelist.get(getAdapterPosition()).getWidth().toString() != null) {

@@ -81,7 +81,7 @@ public class Recces_display extends Activity {
         Log.d("projectid", Preferences.getProjectId().toString());
 */
         //
-        if (!Validation.internet(Recces_display.this)) {
+        if (!Validation.hasActiveInternetConnection(Recces_display.this)) {
             fabAddRecce.setVisibility(View.GONE);
             getRecces_from_local();
             // Toast.makeText(getBaseContext(), "local db recces", Toast.LENGTH_LONG).show();
