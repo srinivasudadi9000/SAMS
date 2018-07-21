@@ -58,7 +58,9 @@ public class Recces_display extends Activity {
     TextView header_tv;
     String position;
     List<Products> productses = null;
-    public String web = "http://128.199.131.14/sams/web/";
+ //   public String web = "http://128.199.131.14/sams/web/";
+ //public String web = "http://128.199.131.14/samsdev/web/";
+    public String web = "http://128.199.131.14/samsapp/web/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

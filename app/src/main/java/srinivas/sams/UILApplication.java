@@ -21,6 +21,7 @@ import android.content.Context;
 import android.os.Build;
 import android.os.StrictMode;
 
+import com.google.firebase.database.FirebaseDatabase;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -34,6 +35,7 @@ public class UILApplication extends Application {
 	@SuppressWarnings("unused")
 	@Override
 	public void onCreate() {
+		FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 		if (Constants.Config.DEVELOPER_MODE && Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
 			StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectAll().penaltyDialog().build());
 			StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder().detectAll().penaltyDeath().build());

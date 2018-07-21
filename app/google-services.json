@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "153100762172",
+    "firebase_url": "https://sams-7d2d3.firebaseio.com",
+    "project_id": "sams-7d2d3",
+    "storage_bucket": "sams-7d2d3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:153100762172:android:85fb2200b380c23f",
+        "android_client_info": {
+          "package_name": "srinivas.sams"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "153100762172-1u33e3pihfuhgs0f75qoec7mmej17br4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "srinivas.sams",
+            "certificate_hash": "4fe558ed438edd409d3c38b0a8cb4fad6a1e2558"
+          }
+        },
+        {
+          "client_id": "153100762172-nr5mmpmp098sppeao6kqp0mc7jiut0gk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGCUV_ZhckPJgOUNwNO9eXzQhnLMigsco"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "153100762172-nr5mmpmp098sppeao6kqp0mc7jiut0gk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

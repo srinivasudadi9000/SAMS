@@ -16,6 +16,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -77,7 +78,9 @@ public class Update_Install extends Activity {
     MultipartBody.Part imageFilePart1 = null,imageFilePart2=null,imageFilePart3=null;
     protected Uri iv_url1 = null, iv_url2 = null, iv_url3 = null, iv_url4 = null;
     Bitmap bmImage = null,bmImage1 = null,bmImage2 = null,bmImage3 = null,bmImage4 = null;;
-    public String web="http://128.199.131.14/sams/web/";
+  //  public String web="http://128.199.131.14/sams/web/";
+  //public String web="http://128.199.131.14/samsdev/web/";
+    public String web="http://128.199.131.14/samsapp/web/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -717,17 +720,35 @@ public class Update_Install extends Activity {
 
     @OnClick(R.id.recceInstallImage)
     public void installImage_new() {
-        image1_select = "selected";
+        /*image1_select = "selected";
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         installimage = new File(getExternalCacheDir(),
                 String.valueOf(System.currentTimeMillis()) + ".jpg");
         iv_url1 = Uri.fromFile(installimage);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, iv_url1);
         startActivityForResult(intent, 1);
+
+*/
+        image1_select = "selected";
+        String root = Environment.getExternalStorageDirectory().toString();
+        File myDir = new File(root + "/RecceImages/");
+        myDir.mkdirs();
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        installimage = new File(myDir,
+                String.valueOf(System.currentTimeMillis()) + ".jpg");
+        // iv_url3 = Uri.fromFile(otherImagefile3);
+        iv_url1 = FileProvider.getUriForFile(
+                Update_Install.this,
+                Update_Install.this
+                        .getPackageName() + ".provider", installimage);
+
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, iv_url1);
+        startActivityForResult(intent, 1);
+
     }
     @OnClick(R.id.ivOtherImage3)
     public void imagethree() {
-        image3_select="selected";
+       /* image3_select="selected";
         String root = Environment.getExternalStorageDirectory().toString();
         File myDir = new File(root + "/RecceImages/");
         myDir.mkdirs();
@@ -736,12 +757,28 @@ public class Update_Install extends Activity {
                 String.valueOf(System.currentTimeMillis()) + ".jpg");
         iv_url3 = Uri.fromFile(otherImagefile3);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, iv_url3);
+        startActivityForResult(intent, O_IMAGE3);*/
+
+        image3_select = "selected";
+        String root = Environment.getExternalStorageDirectory().toString();
+        File myDir = new File(root + "/RecceImages/");
+        myDir.mkdirs();
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        otherImagefile3 = new File(myDir,
+                String.valueOf(System.currentTimeMillis()) + ".jpg");
+        // iv_url3 = Uri.fromFile(otherImagefile3);
+        iv_url3 = FileProvider.getUriForFile(
+                Update_Install.this,
+                Update_Install.this
+                        .getPackageName() + ".provider", otherImagefile3);
+
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, iv_url3);
         startActivityForResult(intent, O_IMAGE3);
     }
 
     @OnClick(R.id.ivOtherImage2)
     public void imagtwo() {
-        image2_select="2";
+       /* image2_select="2";
         String root = Environment.getExternalStorageDirectory().toString();
         File myDir = new File(root + "/RecceImages/");
         myDir.mkdirs();
@@ -749,6 +786,22 @@ public class Update_Install extends Activity {
         otherImagefile2 = new File(myDir,
                 String.valueOf(System.currentTimeMillis()) + ".jpg");
         iv_url2 = Uri.fromFile(otherImagefile2);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, iv_url2);
+        startActivityForResult(intent, O_IMAGE2);*/
+
+        image2_select = "selected";
+        String root = Environment.getExternalStorageDirectory().toString();
+        File myDir = new File(root + "/RecceImages/");
+        myDir.mkdirs();
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        otherImagefile2 = new File(myDir,
+                String.valueOf(System.currentTimeMillis()) + ".jpg");
+        // iv_url3 = Uri.fromFile(otherImagefile3);
+        iv_url2 = FileProvider.getUriForFile(
+                Update_Install.this,
+                Update_Install.this
+                        .getPackageName() + ".provider", otherImagefile2);
+
         intent.putExtra(MediaStore.EXTRA_OUTPUT, iv_url2);
         startActivityForResult(intent, O_IMAGE2);
     }
@@ -762,7 +815,7 @@ public class Update_Install extends Activity {
                 BitmapFactory.Options opt = new BitmapFactory.Options();
                 opt.inSampleSize = 8;
                 opt.inMutable = true;
-                Bitmap bmImage = BitmapFactory.decodeFile(iv_url1.getPath().toString(), opt);
+                Bitmap bmImage = BitmapFactory.decodeFile(installimage.getPath().toString(), opt);
                 recceInstallImage.setScaleType(ImageView.ScaleType.FIT_XY);
                 recceInstallImage.setImageBitmap(bmImage);
                 compressImage(installimage.getAbsolutePath().toString());
@@ -776,7 +829,7 @@ public class Update_Install extends Activity {
                 BitmapFactory.Options opt = new BitmapFactory.Options();
                 opt.inSampleSize = 8;
                 opt.inMutable = true;
-                Bitmap bmImage = BitmapFactory.decodeFile(iv_url2.getPath().toString(), opt);
+                Bitmap bmImage = BitmapFactory.decodeFile(otherImagefile2.getPath().toString(), opt);
                 ivOtherImage2.setScaleType(ImageView.ScaleType.FIT_XY);
                 ivOtherImage2.setImageBitmap(bmImage);
                 compressImage(otherImagefile2.getAbsolutePath().toString());
@@ -787,7 +840,7 @@ public class Update_Install extends Activity {
             BitmapFactory.Options opt = new BitmapFactory.Options();
             opt.inSampleSize = 8;
             opt.inMutable = true;
-            Bitmap bmImage = BitmapFactory.decodeFile(iv_url3.getPath().toString(), opt);
+            Bitmap bmImage = BitmapFactory.decodeFile(otherImagefile3.getPath().toString(), opt);
             ivOtherImage3.setScaleType(ImageView.ScaleType.FIT_XY);
             ivOtherImage3.setImageBitmap(bmImage);
             compressImage(otherImagefile3.getAbsolutePath().toString());

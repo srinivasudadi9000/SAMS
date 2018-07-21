@@ -45,7 +45,9 @@ public class RecceAdapter extends RecyclerView.Adapter<RecceAdapter.Recceholder>
     public Context context;
     View view = null;
     private DisplayImageOptions options;
-    public String web = "http://128.199.131.14/sams/web/";
+   // public String web = "http://128.199.131.14/sams/web/";
+ //  public String web = "http://128.199.131.14/samsdev/web/";
+    public String web = "http://128.199.131.14/samsapp/web/";
 
     public RecceAdapter(List<Recce> receelist, int rowLayout, Context context) {
         //this.receelist.clear();
@@ -482,7 +484,8 @@ public class RecceAdapter extends RecyclerView.Adapter<RecceAdapter.Recceholder>
                             Log.d("values", web+"index.php?r=app-outlets/app-recce-edit&user_id=" + Preferences.getUserid(view.getRootView().getContext()) + "&crew_person_id=" + Preferences.getCrewPersonid_project(view.getRootView().getContext()) + "&recce_id=" + recceid);
                             intent.putExtra("url", web+"index.php?r=app-outlets/app-recce-edit&user_id=" + Preferences.getUserid(view.getRootView().getContext()) + "&crew_person_id=" + Preferences.getCrewPersonid_project(view.getRootView().getContext()) + "&recce_id=" + recceid);
                             view.getRootView().getContext().startActivity(intent);
-                            ((Activity) view.getRootView().getContext()).finish();
+                            ((Activity) view.getContext()).finish();
+
                         }
                     }
                 });

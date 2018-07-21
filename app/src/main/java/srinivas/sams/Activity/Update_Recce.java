@@ -108,7 +108,9 @@ public class Update_Recce extends Activity {
     FileOutputStream fos = null;
     private DisplayImageOptions options;
     MultipartBody.Part imageFilePart1 = null, imageFilePart2 = null, imageFilePart3 = null, imageFilePart4 = null;
-    public String web = "http://128.199.131.14/sams/web/";
+   // public String web = "http://128.199.131.14/sams/web/";
+  // public String web = "http://128.199.131.14/samsdev/web/";
+    public String web = "http://128.199.131.14/samsapp/web/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -961,7 +963,12 @@ public class Update_Recce extends Activity {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         otherImagefile4 = new File(myDir,
                 String.valueOf(System.currentTimeMillis()) + ".jpg");
-        iv_url4 = Uri.fromFile(otherImagefile4);
+       // iv_url4 = Uri.fromFile(otherImagefile4);
+        iv_url4 = FileProvider.getUriForFile(
+                Update_Recce.this,
+                Update_Recce.this
+                        .getPackageName() + ".provider", otherImagefile4);
+
         intent.putExtra(MediaStore.EXTRA_OUTPUT, iv_url4);
         startActivityForResult(intent, O_IMAGE4);
     }
@@ -975,7 +982,12 @@ public class Update_Recce extends Activity {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         otherImagefile3 = new File(myDir,
                 String.valueOf(System.currentTimeMillis()) + ".jpg");
-        iv_url3 = Uri.fromFile(otherImagefile3);
+       // iv_url3 = Uri.fromFile(otherImagefile3);
+        iv_url3 = FileProvider.getUriForFile(
+                Update_Recce.this,
+                Update_Recce.this
+                        .getPackageName() + ".provider", otherImagefile3);
+
         intent.putExtra(MediaStore.EXTRA_OUTPUT, iv_url3);
         startActivityForResult(intent, O_IMAGE3);
     }
@@ -989,7 +1001,11 @@ public class Update_Recce extends Activity {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         otherImagefile2 = new File(myDir,
                 String.valueOf(System.currentTimeMillis()) + ".jpg");
-        iv_url2 = Uri.fromFile(otherImagefile2);
+      //  iv_url2 = Uri.fromFile(otherImagefile2);
+        iv_url2 = FileProvider.getUriForFile(
+                Update_Recce.this,
+                Update_Recce.this
+                        .getPackageName() + ".provider", otherImagefile2);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, iv_url2);
         startActivityForResult(intent, O_IMAGE2);
     }
@@ -1211,7 +1227,8 @@ public class Update_Recce extends Activity {
                 BitmapFactory.Options opt = new BitmapFactory.Options();
                 opt.inSampleSize = 8;
                 opt.inMutable = true;
-                Bitmap bmImage = BitmapFactory.decodeFile(iv_url2.getPath().toString(), opt);
+               // Bitmap bmImage = BitmapFactory.decodeFile(iv_url2.getPath().toString(), opt);
+                Bitmap bmImage = BitmapFactory.decodeFile(otherImagefile2.getPath().toString(), opt);
                 ivOtherImage2.setImageBitmap(bmImage);
                 compressImage(otherImagefile2.getAbsolutePath().toString());
             } catch (Exception e) {
@@ -1222,7 +1239,8 @@ public class Update_Recce extends Activity {
             BitmapFactory.Options opt = new BitmapFactory.Options();
             opt.inSampleSize = 8;
             opt.inMutable = true;
-            Bitmap bmImage = BitmapFactory.decodeFile(iv_url3.getPath().toString(), opt);
+           // Bitmap bmImage = BitmapFactory.decodeFile(iv_url3.getPath().toString(), opt);
+            Bitmap bmImage = BitmapFactory.decodeFile(otherImagefile3.getPath().toString(), opt);
             ivOtherImage3.setImageBitmap(bmImage);
             compressImage(otherImagefile3.getAbsolutePath().toString());
         } else if (requestCode == O_IMAGE4 && resultCode == RESULT_OK) {
@@ -1230,7 +1248,8 @@ public class Update_Recce extends Activity {
                 BitmapFactory.Options opt = new BitmapFactory.Options();
                 opt.inSampleSize = 8;
                 opt.inMutable = true;
-                Bitmap bmImage = BitmapFactory.decodeFile(iv_url4.getPath().toString(), opt);
+               // Bitmap bmImage = BitmapFactory.decodeFile(iv_url4.getPath().toString(), opt);
+                Bitmap bmImage = BitmapFactory.decodeFile(otherImagefile4.getPath().toString(), opt);
                 ivOtherImage4.setImageBitmap(bmImage);
                 compressImage(otherImagefile4.getAbsolutePath().toString());
             } /*catch (OutOfMemoryError ome) {
@@ -1277,7 +1296,7 @@ public class Update_Recce extends Activity {
                             , getIntent().getStringExtra("recce_id").toString(), iv_urlRC,
                             offlineimgpath1.toString(), offlineimgpath2.toString()
                             , offlineimgpath3.toString(), offlineimgpath4.toString(),
-                            latitude, longitude, address, Preferences.getProjectId(Update_Recce.this), "online_update", "Completed");
+                            latitude, longitude, address.replaceAll("'", ""), Preferences.getProjectId(Update_Recce.this), "online_update", "Completed");
                 } else {
                     updateRecce_Localdb(uomid, tvRwidth.getText().toString(), tvRheight.getText().toString()
                             , width_feet, height_feet, width_inch, height_inch, product_id, Preferences.getKey(Update_Recce.this), Preferences.getUserid(Update_Recce.this),

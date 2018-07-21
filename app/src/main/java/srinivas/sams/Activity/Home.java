@@ -2,6 +2,7 @@ package srinivas.sams.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -22,12 +23,14 @@ public class Home extends Activity {
     TextView lastSync_tv;
     @BindView(R.id.crewpersonnames_tv)
     TextView crewpersonnames_tv;
+    SharedPreferences ss;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
         ButterKnife.bind(this);
         clearPreferences();
+        ss = getSharedPreferences("allow",MODE_PRIVATE);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss a");
         String format = simpleDateFormat.format(new Date());
         lastSync_tv.setText("Last Sync : "+format.toString());
@@ -40,23 +43,44 @@ public class Home extends Activity {
     public void buttonClicks(View view) {
 
         switch(view.getId()) {
+
             case R.id.Recce_btn:
                /* Intent i = new Intent(Home.this,Recces_display.class);
                 startActivity(i);*/
-                Preferences.setSelection("RECCES",Home.this);
-                Intent i = new Intent(Home.this,Project.class);
-                startActivity(i);
+
+               if (ss.getString("status","").equals("true")){
+                   Preferences.setSelection("RECCES",Home.this);
+                   Intent i = new Intent(Home.this,Project.class);
+                   startActivity(i);
+               }else {
+                   Intent notallow = new Intent(Home.this, Notallow.class);
+                   startActivity(notallow);
+                   finish();
+               }
                 break;
 
             case R.id.Installtion_btn:
-                Preferences.setSelection("INSTALLATIONS",Home.this);
-                Intent instal = new Intent(Home.this,Project.class);
-                startActivity(instal);
+                if (ss.getString("status","").equals("true")){
+                    Preferences.setSelection("INSTALLATIONS",Home.this);
+                    Intent instal = new Intent(Home.this,Project.class);
+                    startActivity(instal);
+
+                }else {
+                    Intent notallow = new Intent(Home.this, Notallow.class);
+                    startActivity(notallow);
+                    finish();
+                }
                 break;
 
             case R.id.Sync_btn:
-                Intent sync = new Intent(Home.this,Sync.class);
-                startActivity(sync);
+                if (ss.getString("status","").equals("true")){
+                    Intent sync = new Intent(Home.this,Sync.class);
+                    startActivity(sync);
+                }else {
+                    Intent notallow = new Intent(Home.this, Notallow.class);
+                    startActivity(notallow);
+                    finish();
+                }
                 break;
             case R.id.logout_btn:
                 Preferences.setVendor("login", "", "", Home.this);

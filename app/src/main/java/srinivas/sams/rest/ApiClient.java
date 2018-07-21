@@ -11,7 +11,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
      // public static final String BASE_URL = "http://sams.mmos.in/sams/web/";
-     public static final String BASE_URL = "http://128.199.131.14/sams/web/";
+   //  public static final String BASE_URL = "http://128.199.131.14/samsdev/web/";
+    public static final String BASE_URL = "http://128.199.131.14/samsapp/web/";
     private static Retrofit retrofit = null;
 
     public static Retrofit getSams(){

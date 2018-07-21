@@ -41,7 +41,9 @@ public class InstallAdapter extends RecyclerView.Adapter<InstallAdapter.Reccehol
     private int rowLayout;
     public Context context;
     private DisplayImageOptions options;
-    public String web = "http://128.199.131.14/sams/web/";
+   // public String web = "http://128.199.131.14/sams/web/";
+  // public String web = "http://128.199.131.14/samsdev/web/";
+    public String web = "http://128.199.131.14/samsapp/web/";
     public InstallAdapter(List<Installation> installations, int rowLayout, Context context) {
         this.installations = installations;
         this.installations_filter = installations;

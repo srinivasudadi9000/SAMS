@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="srinivas.sams.Activity.Notallow">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:text="You'r not authorized user please contact admin"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="30dp"
+            android:layout_height="match_parent" />
+        <TextView
+            android:textColor="#ffffff"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:text="Powered by schemax"
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

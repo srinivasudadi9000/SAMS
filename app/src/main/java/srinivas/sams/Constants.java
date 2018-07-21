@@ -19,7 +19,7 @@ package srinivas.sams;
  * @author Sergey Tarasevich (nostra13[at]gmail[dot]com)
  */
 public final class Constants {
-
+   public String allow;
 	public static final String[] IMAGES = new String[] {
 			// Heavy images
 			"https://lh6.googleusercontent.com/-55osAWw3x0Q/URquUtcFr5I/AAAAAAAAAbs/rWlj1RUKrYI/s1024/A%252520Photographer.jpg",
@@ -161,9 +161,12 @@ public final class Constants {
 			"http://wrong.site.com/corruptedLink", // Wrong link
 	};
 
-	private Constants() {
+	public Constants(String allow) {
+		this.allow = allow;
 	}
-
+    public String statuofallow(){
+		return allow;
+	}
 	public static class Config {
 		public static final boolean DEVELOPER_MODE = false;
 	}
