@@ -99,15 +99,17 @@ public class Login extends Activity {
         /*Intent i = new Intent(Login.this, Home.class);
         startActivity(i);*/
     }
-    private void loginSams(){
+
+    private void loginSams() {
         if (!Validation.hasActiveInternetConnection(Login.this)) {
             showInternet(Login.this);
         } else {
-            Toast.makeText(getBaseContext(),imenumber1+" "+imenumber2,Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), imenumber1 + " " + imenumber2, Toast.LENGTH_SHORT).show();
 
             appLogin();
         }
     }
+
     private void showInternet(Context activity) {
         this.overridePendingTransition(R.anim.slideleft,
                 R.anim.slideleft);
@@ -131,10 +133,11 @@ public class Login extends Activity {
 
     public void appLogin() {
         ApiInterface apiService = ApiClient.getSams().create(ApiInterface.class);
-          Call<Appopen> call = apiService.getVendors("865874035741786", "865874035741794");
+        //Call<Appopen> call = apiService.getVendors("865687032199968", "865687032199976");
+        //  Call<Appopen> call = apiService.getVendors("865874035741786", "865874035741794");
         // Call<Appopen> call = apiService.getVendors("862114032689487", "862114032689487");
-         //  Call<Appopen> call = apiService.getVendors("863675036469448", "863675036469448");
-       // Call<Appopen> call = apiService.getVendors(imenumber1, imenumber2);
+        //  Call<Appopen> call = apiService.getVendors("863675036469448", "863675036469448");
+        Call<Appopen> call = apiService.getVendors(imenumber1, imenumber2);
         call.enqueue(new Callback<Appopen>() {
             @Override
             public void onResponse(Call<Appopen> call, Response<Appopen> response) {
@@ -143,7 +146,7 @@ public class Login extends Activity {
                 String result = String.valueOf(response.code());
                 if (result.equals("200")) {
                     String status = response.body().getStatus().toString();
-                    if (status.equals("success")){
+                    if (status.equals("success")) {
                         vendors = response.body().getVendors_list();
                         login_spinner = new Login_spinner(Login.this, vendors);
                         spinner_login.setAdapter(login_spinner);
